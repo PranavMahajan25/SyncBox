@@ -1,0 +1,6 @@
+site_name: SyncBox
+nav:
+    - Home: index.md
+    - About: about.md
+    
+theme: readthedocs
