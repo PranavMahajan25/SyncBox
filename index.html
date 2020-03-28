@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="None">
-  
+  <meta name="description" content="Documentation for SyncBox">
+  <meta name="author" content="Pranav Mahajan">
   
   <link rel="shortcut icon" href="img/favicon.ico">
   <title>SyncBox</title>
@@ -50,15 +50,66 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a>
+    <li class="toctree-l2"><a class="reference internal" href="#symmetric">Symmetric:</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#project-layout">Project layout</a>
+    <li class="toctree-l2"><a class="reference internal" href="#directional">Directional:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#about">About:</a>
     </li>
     </ul>
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="about/">About</a>
+                    <li class="toctree-l1"><a class="reference internal" href="install/">Installation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tutorial</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="tutorials/tutorial1/">Tutorial 1</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="tutorials/tutorial2/">Tutorial 2</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">References</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Toolbox functions</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="ref/timeseriesCrossCorrelation/">timeseriesCrossCorrelation.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="ref/timeseriesPLV/">timeseriesPLV.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="ref/timeseriesCoherence/">timeseriesCoherence.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="ref/timeseriesMI_kernel/">timeseriesMI_kernel.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="ref/timeseriesTE_rank/">timeseriesTE_rank.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="ref/timeseriesPhaseTE/">timeseriesPhaseTE.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="ref/timeseriesNLI/">timeseriesNLI.m</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Supporting functions</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="ref/fft_perform/">fft_perform.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="ref/powernoise/">powernoise.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="ref/quantentr/">quantentr.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="ref/ssqd/">ssqd.m</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">About</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="about/release-notes/">Release Notes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="about/contributing/">Contributing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="about/license/">License</a>
                     </li>
                 </ul>
       </div>
@@ -95,19 +146,30 @@
               
                 <h1 id="welcome-to-syncbox">Welcome to SyncBox!</h1>
 <p>A synchronization measures toolbox.</p>
-<h2 id="commands">Commands</h2>
+<p>SyncBox implements a total of 7 synchronization measures (4 symmetric and 3 directional measures). 
+These measures computed from the timeseries data can be used to investigate dynamical systems treating them as blackboxes. 
+Our work is largely influenced and organized as per the review chapter by Thomas Kreuz [1].
+The following measures are included in SyncBox,</p>
+<h4 id="symmetric">Symmetric:</h4>
 <ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
+<li>Spectral Coherence </li>
+<li>Phase locking value</li>
+<li>Mutual Information</li>
+<li>Cross correlation</li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</code></pre>
+<h4 id="directional">Directional:</h4>
+<ul>
+<li>Transfer entropy</li>
+<li>Phase transfer entropy (PTE) and differential PTE</li>
+<li>Directed Nonlinear Interdependence</li>
+</ul>
+<p>Feel free to refer to <code>References/Toolbox functions</code> for more details.</p>
+<h4 id="about">About:</h4>
+<p>This toolbox is built by <a href="https://pranavmahajan25.github.io/portfolio/">Pranav Mahajan</a>, under the guidance of <a href="https://www.bits-pilani.ac.in/goa/basabdattab/profile">Dr. Basabdatta Sen Bhattacharya</a>. 
+We hope these tools will be useful to neuroscientists, information theorists, physicists, communication engineers and more. 
+Feel free to reach out at f20170277@goa.bits-pilani.ac.in with suggestions or feedback!</p>
+<p>References:</p>
+<p>[1] Kreuz, T., 2013. Synchronization measures. Principles of Neural Coding, pp.97-120.</p>
               
             </div>
           </div>
@@ -115,7 +177,7 @@ docs/
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="about/" class="btn btn-neutral float-right" title="About">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="install/" class="btn btn-neutral float-right" title="Installation">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
     </div>
@@ -143,7 +205,7 @@ docs/
       
       
       
-        <span style="margin-left: 15px"><a href="about/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="install/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
@@ -161,5 +223,5 @@ docs/
 
 <!--
 MkDocs version : 1.1
-Build Date UTC : 2020-03-23 02:20:42
+Build Date UTC : 2020-03-28 11:21:52
 -->
