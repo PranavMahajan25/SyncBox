@@ -1,6 +1,31 @@
 site_name: SyncBox
+site_description: 'Documentation for SyncBox'
+site_author: 'Pranav Mahajan'
+
 nav:
     - Home: index.md
-    - About: about.md
+    - Installation: install.md
+    - Tutorial:
+        - Tutorial 1: tutorials/tutorial1.md
+        - Tutorial 2: tutorials/tutorial2.md
+    - References: 
+        - Toolbox functions:
+            - timeseriesCrossCorrelation.m: ref/timeseriesCrossCorrelation.md
+            - timeseriesPLV.m: ref/timeseriesPLV.md
+            - timeseriesCoherence.m: ref/timeseriesCoherence.md
+            - timeseriesMI_kernel.m: ref/timeseriesMI_kernel.md
+            - timeseriesTE_rank.m: ref/timeseriesTE_rank.md
+            - timeseriesPhaseTE.m: ref/timeseriesPhaseTE.md
+            - timeseriesNLI.m: ref/timeseriesNLI.md
+        - Supporting functions:
+            - fft_perform.m: ref/fft_perform.md
+            - powernoise.m: ref/powernoise.md
+            - quantentr.m: ref/quantentr.md
+            - ssqd.m: ref/ssqd.md
+    - About: 
+        - Release Notes: about/release-notes.md
+        - Contributing: about/contributing.md
+        - License: about/license.md
+  
     
 theme: readthedocs

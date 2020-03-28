@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Pranav Mahajan">
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Tutorial 2 - SyncBox</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Tutorial 2";
+    var mkdocs_page_input_path = "tutorials\\tutorial2.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> SyncBox</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../install/">Installation</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tutorial</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../tutorial1/">Tutorial 1</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Tutorial 2</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#construct-appropriate-filter">Construct appropriate filter.</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#load-filter-and-plot-timeseries">Load, filter and plot timeseries</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cross-correlation">Cross Correlation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#phase-locking-value-plv-estimation">Phase locking value (PLV) estimation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#spectral-coherence-estimate">Spectral Coherence estimate</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mutual-info-estimated-using-gaussian-kernels">Mutual Info estimated using Gaussian kernels</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#transfer-entropy-te-estimation-rank-method-simple-binning">Transfer Entropy (TE) estimation  (Rank method - simple binning)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#phase-te-and-differential-phase-te-estimation">Phase TE and differential Phase TE estimation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#directed-nonlinear-interdependence">Directed Nonlinear Interdependence</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">References</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Toolbox functions</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../ref/timeseriesCrossCorrelation/">timeseriesCrossCorrelation.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ref/timeseriesPLV/">timeseriesPLV.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ref/timeseriesCoherence/">timeseriesCoherence.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ref/timeseriesMI_kernel/">timeseriesMI_kernel.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ref/timeseriesTE_rank/">timeseriesTE_rank.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ref/timeseriesPhaseTE/">timeseriesPhaseTE.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ref/timeseriesNLI/">timeseriesNLI.m</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Supporting functions</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../ref/fft_perform/">fft_perform.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ref/powernoise/">powernoise.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ref/quantentr/">quantentr.m</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ref/ssqd/">ssqd.m</a>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">About</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/release-notes/">Release Notes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/contributing/">Contributing</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/license/">License</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">SyncBox</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tutorial &raquo;</li>
+        
+      
+    
+    <li>Tutorial 2</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="neuron-mass-model-timeseries-tutorial">Neuron mass model timeseries tutorial</h1>
+<p>We demonstrate how to filter output timeseries from a simulation of Neuron mass model of two coupled LGNs 
+and utilize the toolbox functions to estimate synchronozation measure estimates.</p>
+<h4 id="construct-appropriate-filter">Construct appropriate filter.</h4>
+<p>Appropriate filter construction is necessary for PLV calculation as we use Hilbert transform for phase extraction. 
+Another variant using Morlet wavelet (which we have not implemented filters in it's own band so in that case filtering won't be necessary.</p>
+<pre><code class="matlab">% THE TIME PARAMETERS AND VECTOR
+delt=0.001; %% 1 millisecond
+endtime=40; %% seconds
+
+timevec=0:delt:endtime;
+timelen=numel(timevec);
+
+% Construct an FDESIGN object and call its BUTTER method.
+Fs = 1000;
+Fc1 = 1; % First Cutoff Frequency
+Fc2 = 200; % Second Cutoff Frequency
+N = 10; % Order
+h = fdesign.bandpass('N,F3dB1,F3dB2', N, Fc1, Fc2, Fs);
+Hd = design(h, 'butter');
+[B,A]=sos2tf(Hd.sosMatrix,Hd.Scalevalues);
+</code></pre>
+
+<h4 id="load-filter-and-plot-timeseries">Load, filter and plot timeseries</h4>
+<pre><code class="matlab">load('data.mat')
+
+Vtcr1 = filtfilt(B,A,squeeze(data(1, :)));
+% hold on; 
+% plot(timevec(15001:20000), Vtcr1(15001:20000))
+Vtcr2 = filtfilt(B,A,squeeze(data(2, :)));
+% hold on; 
+% plot(timevec(15001:20000), Vtcr2(15001:20000))
+
+</code></pre>
+
+<h4 id="cross-correlation">Cross Correlation</h4>
+<pre><code class="matlab">&gt;&gt; X1 = Vtcr1(15001:20000);
+&gt;&gt; Y1 = Vtcr2(15001:20000);
+&gt;&gt; [parameters,data] = timeseriesCrossCorrelation(X1, Y1, 0, 10, 'normalized');
+&gt;&gt; Corr = parameters.Corr;
+&gt;&gt; signal1 = data.signal1;
+&gt;&gt; signal2 = data.signal2;
+&gt;&gt; Corr
+Corr =
+
+    0.9814
+</code></pre>
+
+<h4 id="phase-locking-value-plv-estimation">Phase locking value (PLV) estimation</h4>
+<pre><code class="matlab">&gt;&gt; X1 = Vtcr1(15001:20000);
+&gt;&gt; Y1 = Vtcr2(15001:20000);
+&gt;&gt; [parameters, data]=timeseriesPLV(X1,Y1);
+&gt;&gt; PLV = parameters.PLV_estimate;
+&gt;&gt; signal1 = data.signal1;
+&gt;&gt; signal2 = data.signal2;
+&gt;&gt; PLV
+PLV =
+
+    0.9881
+</code></pre>
+
+<h4 id="spectral-coherence-estimate">Spectral Coherence estimate</h4>
+<pre><code class="matlab">&gt;&gt; X1 = Vtcr1(15001:20000);
+&gt;&gt; Y1 = Vtcr2(15001:20000);
+&gt;&gt; X2 = Vtcr1(20001:25000);
+&gt;&gt; Y2 = Vtcr2(20001:25000);
+&gt;&gt; X3 = Vtcr1(25001:30000);
+&gt;&gt; Y3 = Vtcr2(25001:30000);
+&gt;&gt; X = [X1; X2; X3]; % 3 trials
+&gt;&gt; Y = [Y1; Y2; Y3]; % 3 trials
+&gt;&gt; [parameters,data] = timeseriesCoherence(X, Y);
+&gt;&gt; Coh = parameters.Coh_estimate;
+&gt;&gt; trial_data = data.trial;
+&gt;&gt; Coh
+Coh =
+
+    1
+</code></pre>
+
+<h4 id="mutual-info-estimated-using-gaussian-kernels">Mutual Info estimated using Gaussian kernels</h4>
+<pre><code class="matlab">&gt;&gt; X1 = Vtcr1(15001:20000);
+&gt;&gt; Y1 = Vtcr2(15001:20000);
+&gt;&gt; [parameters,data] = timeseriesMI_kernel(X1, Y1);
+&gt;&gt; MI = parameters.MI_estimate;
+&gt;&gt; h = parameters.kernel_width;
+&gt;&gt; signal1 = data.signal1;
+&gt;&gt; signal2 = data.signal2;
+&gt;&gt; MI
+MI =
+
+    1.2277
+</code></pre>
+
+<h4 id="transfer-entropy-te-estimation-rank-method-simple-binning">Transfer Entropy (TE) estimation  (Rank method - simple binning)</h4>
+<pre><code class="matlab">&gt;&gt; X1 = Vtcr1(15001:20000);
+&gt;&gt; Y1 = Vtcr2(15001:20000);
+&gt;&gt; t=2; w=2; % time lag 
+&gt;&gt; l=1; k=1; % block lengths
+&gt;&gt; [parameters, data] = timeseriesTE_rank(X1,Y1,l,k,t,w,128);
+&gt;&gt; TE = parameters.TE_estimate;
+&gt;&gt; signal1 = data.signal1;
+&gt;&gt; signal2 = data.signal2;
+&gt;&gt; TE
+TE =
+
+    2.6225
+
+</code></pre>
+
+<h4 id="phase-te-and-differential-phase-te-estimation">Phase TE and differential Phase TE estimation</h4>
+<pre><code class="matlab">&gt;&gt; X1 = Vtcr1(15001:20000);
+&gt;&gt; Y1 = Vtcr2(15001:20000);
+&gt;&gt; [parameters, data] = timeseriesPhaseTE(X1, Y1);
+&gt;&gt; PTE = parameters.PTE_estimate;
+&gt;&gt; dPTE = parameters.dPTE_estimate;
+&gt;&gt; signal1 = data.signal1;
+&gt;&gt; signal2 = data.signal2;
+&gt;&gt; PTE, dPTE
+PTE =
+
+    0.1695
+
+
+dPTE =
+
+    0.5194
+
+</code></pre>
+
+<h4 id="directed-nonlinear-interdependence">Directed Nonlinear Interdependence</h4>
+<p>Note: Takes significant time to compute, ranking based solution can improve compute time.</p>
+<pre><code class="matlab">&gt;&gt; X1 = Vtcr1(15001:20000);
+&gt;&gt; Y1 = Vtcr2(15001:20000);
+&gt;&gt; [parameters,data] = timeseriesNLI(X1, Y1, 32, 1024);
+&gt;&gt; M = parameters.NLI_estimate;
+&gt;&gt; signal1 = data.signal1;
+&gt;&gt; signal2 = data.signal2;
+&gt;&gt; M
+M =
+
+     1
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../ref/timeseriesCrossCorrelation/" class="btn btn-neutral float-right" title="timeseriesCrossCorrelation.m">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../tutorial1/" class="btn btn-neutral" title="Tutorial 1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../tutorial1/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../ref/timeseriesCrossCorrelation/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
