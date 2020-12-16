@@ -1,7 +1,7 @@
 function [parameters, data] = timeseriesLambda(X, Y, m, n)
 %%%%%
 % This function computes the Lambda synchronisation measure value between 
-% time series X & Y.
+% time series X & Y, for m:n synchronization.
 % Uses Hilbert transform for Phase extraction.
 % After extracting phases from both timeseries, 
 % the method detailed in Rosenblum et. al. is followed to calculate the
