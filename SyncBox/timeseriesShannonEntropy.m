@@ -1,11 +1,11 @@
 function [parameters, data] = timeseriesShannonEntropy(X, Y, m, n)
 %%%%%
-% This function computes the shannon entropy sync measure between time series 
-% X & Y,
+% This function computes the normalized shannon entropy sync measure between 
+% time series X & Y, for m:n synchronization.
 % Uses Hilbert transform for Phase extraction.
 % After extracting phases from both timeseries, 
 % the Shannon entropy of the phase relation histogram is calculated and 
-% normalised.
+% normalised by the maximum possible Shannon entropy for the histogram.
 %
 % Inputs:
 % X: first time series in 1-D vector
@@ -25,6 +25,14 @@ function [parameters, data] = timeseriesShannonEntropy(X, Y, m, n)
 % implementations, so please do consider citing them:
 % 
 % References:
+% Rosenblum,M.,Pikovsky,A.,Kurths,J.,Schafer,C.,Tass,P.:Chapter 9 phase 
+% synchronization: From theory to data analysis. In: Neuro-Informatics and 
+% Neural Mod- elling, pp. 279–321. Elsevier (2001).
+%
+% Notbohm, A., Kurths, J., Herrmann, C.S.: Modification of brain oscillations 
+% via rhythmic light stimulation provides evidence for entrainment but not for 
+% super- position of event-related responses. Frontiers in Human Neuroscience 
+% 10, 10 (2016).
 %%%%%
 
 %% check input arguments

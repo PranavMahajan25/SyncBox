@@ -24,6 +24,9 @@ function [parameters, data] = timeseriesLambda(X, Y, m, n)
 % implementations, so please do consider citing them:
 % 
 % References:
+% Rosenblum,M.,Pikovsky,A.,Kurths,J.,Schafer,C.,Tass,P.:Chapter 9 phase 
+% synchronization: From theory to data analysis. In: Neuro-Informatics and 
+% Neural Mod- elling, pp. 279–321. Elsevier (2001).
 %%%%%
 
 %% check input arguments
