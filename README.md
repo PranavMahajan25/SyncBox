@@ -141,6 +141,3 @@ where n is the number of trials and m is the number of datapoints in a single ti
 #### Outputs:
 `parameter.Coh_estimate`: Coherence estimate (between 0 to 1)
 `data.trial`: X and Y trials in cell format 
-
-# SyncBox
-A synchronization measures toolbox
