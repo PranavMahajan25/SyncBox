@@ -35,10 +35,6 @@ This function computes the Lambda synchronisation measure value between time ser
 >> Lambda = parameters.Lambda_estimate;
 >> signal1 = data.signal1;
 >> signal2 = data.signal2;
-<!-- >> Lambda
-Lambda =
-
-	0.9881 -->
 ```
 
 NOTE: Our work builds upon the code included in the following works and
