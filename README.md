@@ -44,7 +44,7 @@ For details about the measures, refer to the [docs](https://pranavmahajan25.gith
 
 ## Directory Structure	
 
-The SyncBox directory has the required code. You can ignore the SyncBox-Docs folder.
+The SyncBox directory has the required code. You can ignore the SyncBox-Docs folder as this contains the documentation for each file which can be found in the [docs](https://pranavmahajan25.github.io/SyncBox/).
 
 ```bash
 SyncBox
