@@ -37,10 +37,6 @@ This function computes the Normalized Shannon Entropy sync measure between time 
 >> NSE = parameters.ShannonEntropy_estimate;
 >> signal1 = data.signal1;
 >> signal2 = data.signal2;
-<!-- >> NSE
-NSE =
-
-	0.9881 -->
 ```
 
 NOTE: Our work builds upon the code included in the following works and
