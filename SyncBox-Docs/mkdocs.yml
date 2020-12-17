@@ -13,6 +13,8 @@ nav:
             - timeseriesCrossCorrelation.m: ref/timeseriesCrossCorrelation.md
             - timeseriesPLV.m: ref/timeseriesPLV.md
             - timeseriesCoherence.m: ref/timeseriesCoherence.md
+            - timeseriesShannonEntropy.m: ref/timeseriesShannonEntropy.md
+            - timeseriesLambda.m: ref/timeseriesLambda.md
             - timeseriesMI_kernel.m: ref/timeseriesMI_kernel.md
             - timeseriesTE_rank.m: ref/timeseriesTE_rank.md
             - timeseriesPhaseTE.m: ref/timeseriesPhaseTE.md
