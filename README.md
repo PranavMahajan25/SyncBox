@@ -19,7 +19,7 @@ git clone https://github.com/PranavMahajan25/SyncBox.git
 
 or download zip by clicking on the **Code** button at the top and unzip it in your working directory.
 
-The synchronization measures can be found in SyncBox->SyncBox->toolbox(refer to the folder structure below). You can start using the functions right away! Check out the tutorials or refer to function descriptions in the [docs](https://pranavmahajan25.github.io/SyncBox/)
+The synchronization measures can be found in the directory `SyncBox/SyncBox/toolbox`(refer to the folder structure below). You can start using the functions right away! Check out the tutorials or refer to function descriptions in the [docs](https://pranavmahajan25.github.io/SyncBox/)
 
 ## Measures
 
