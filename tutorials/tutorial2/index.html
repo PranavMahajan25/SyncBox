@@ -92,7 +92,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../ref/timeseriesCoherence/">timeseriesCoherence.m</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../ref/timeseriesShannonEntropy/">timeseriesShannonEntropy.m</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../ref/timeseriesNSE/">timeseriesNSE.m</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../ref/timeseriesLambda/">timeseriesLambda.m</a>
                 </li>
@@ -165,11 +165,13 @@
             <div class="section">
               
                 <h1 id="neuron-mass-model-timeseries-tutorial">Neuron mass model timeseries tutorial</h1>
-<p>We demonstrate how to filter output timeseries from a simulation of Neuron mass model of two coupled LGNs 
+<p>In Tutorial one we computed synchronization measures on output of two coupled oscillators. 
+Now in this tutorial we will apply these measures to a pre-computed output of two coupled brain-inspired  neural networks.
+We demonstrate how to filter output timeseries from a simulation of Neuron mass model of two coupled Lateral Geniculate Nuclei (LGNs) 
 and utilize the toolbox functions to estimate synchronozation measure estimates.</p>
 <h4 id="construct-appropriate-filter">Construct appropriate filter.</h4>
 <p>Appropriate filter construction is necessary for PLV calculation as we use Hilbert transform for phase extraction. 
-Another variant using Morlet wavelet (which we have not implemented filters in it's own band so in that case filtering won't be necessary.</p>
+Another variant using Morlet wavelet (which we have not implemented) filters in it's own band so in that case filtering won't be necessary.</p>
 <pre><code class="matlab">% THE TIME PARAMETERS AND VECTOR
 delt=0.001; %% 1 millisecond
 endtime=40; %% seconds

@@ -72,7 +72,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../timeseriesCoherence/">timeseriesCoherence.m</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../timeseriesShannonEntropy/">timeseriesShannonEntropy.m</a>
+                <li class="toctree-l2"><a class="reference internal" href="../timeseriesNSE/">timeseriesNSE.m</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../timeseriesLambda/">timeseriesLambda.m</a>
                 </li>
@@ -156,7 +156,9 @@
               
                 <h2 id="mutual-information">Mutual Information</h2>
 <p><code>function [parameters, data] = timeseriesMI_kernel(X, Y, h, ind)</code></p>
-<p>This function computes the Kernel-based estimate for mutual information 
+<p>Mutual information is an information-theoretic measure that can quantify non-linear dependencies between systems, unlike linear cross-correlation.
+It quantifiesthe amount of information about one system obtained by knowing about theother system
+This function computes the Kernel-based estimate for mutual information 
 I(X, Y) between time series X and Y.
 Data is first copula-transformed, then marginal and joint probability 
 distributions are estimated using Gaussian kernels.</p>

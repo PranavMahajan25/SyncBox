@@ -9,7 +9,7 @@
   <meta name="author" content="Pranav Mahajan">
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>timeseriesShannonEntropy.m - SyncBox</title>
+  <title>timeseriesNSE.m - SyncBox</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "timeseriesShannonEntropy.m";
-    var mkdocs_page_input_path = "ref\\timeseriesShannonEntropy.md";
+    var mkdocs_page_name = "timeseriesNSE.m";
+    var mkdocs_page_input_path = "ref\\timeseriesNSE.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -72,7 +72,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../timeseriesCoherence/">timeseriesCoherence.m</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">timeseriesShannonEntropy.m</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">timeseriesNSE.m</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#inputs">Inputs:</a>
     </li>
@@ -143,7 +143,7 @@
         
       
     
-    <li>timeseriesShannonEntropy.m</li>
+    <li>timeseriesNSE.m</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -155,7 +155,7 @@
             <div class="section">
               
                 <h2 id="normalized-shannon-entropy">Normalized Shannon Entropy</h2>
-<p><code>function [parameters, data] = timeseriesShannonEntropy(X, Y, m, n)</code></p>
+<p><code>function [parameters, data] = timeseriesNSE(X, Y, m, n)</code></p>
 <p>This function computes the Normalized Shannon Entropy sync measure between time series X &amp; Y, for m:n synchronization. Uses Hilbert transform for Phase extraction. After extracting phases from both timeseries, the Shannon entropy of the phase relation histogram is calculated. This value is normalised by the maximum possible Shannon entropy for the histogram.</p>
 <h4 id="inputs">Inputs:</h4>
 <p><code>X</code>: first time series in 1-D vector</p>
@@ -163,7 +163,7 @@
 <p><code>m</code>: multiple for the first signal, default is 1</p>
 <p><code>n</code>: multiple for the second signal, default is 1</p>
 <h4 id="outputs">Outputs:</h4>
-<p><code>parameter.ShannonEntropy_estimate</code>: normalaised Shannon Entropy estimate (between 0 to 1)</p>
+<p><code>parameter.NSE_estimate</code>: normalaised Shannon Entropy estimate (between 0 to 1)</p>
 <p><code>data.signal1</code>: X</p>
 <p><code>data.signal2</code>: Y</p>
 <h2 id="example-usage">Example usage</h2>
@@ -171,8 +171,8 @@
 &gt;&gt; Y1 = Vtcr2(15001:20000);
 &gt;&gt; m = 1;
 &gt;&gt; n = 1;
-&gt;&gt; [parameters, data]=timeseriesShannonEntropy(X1,Y1,m,n);
-&gt;&gt; NSE = parameters.ShannonEntropy_estimate;
+&gt;&gt; [parameters, data]=timeseriesNSE(X1,Y1,m,n);
+&gt;&gt; NSE = parameters.NSE_estimate;
 &gt;&gt; signal1 = data.signal1;
 &gt;&gt; signal2 = data.signal2;
 </code></pre>
