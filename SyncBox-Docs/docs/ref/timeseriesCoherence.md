@@ -2,6 +2,7 @@
 
 `function [parameters, data]=timeseriesCoherence(X,Y,n)`
 
+Spectral coherence measures the normalized correlation between two powerspectra.
 This function computes the Spectral Coherence between 'n' trials of 
 2 time series X & Y. In spectral coherence computation, the time-domain signals of each trial are transformed in the frequency domain
 and phase-coupling is assessed frequency-by-frequency.

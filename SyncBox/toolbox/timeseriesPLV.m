@@ -25,6 +25,11 @@ function [parameters, data] = timeseriesPLV(X,Y)
 % implementations, so please do consider citing them:
 % 
 % References:
+% [1] Lowet, E., Roberts, M. J., Bonizzi, P., Karel, J., & De Weerd, P. 
+% (2016). Quantifying neural oscillatory synchronization: a comparison 
+% between spectral coherence and phase-locking value approaches. PloS one, 11(1)
+% [2] Lachaux, J. P., Rodriguez, E., Martinerie, J., & Varela, F. J. (1999). 
+% Measuring phase synchrony in brain signals. Human brain mapping, 8(4), 194-208.
 %%%%%
 
 %% check input arguments

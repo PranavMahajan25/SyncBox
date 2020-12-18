@@ -2,6 +2,7 @@
 
 `function [parameters, data] = timeseriesPLV(X,Y)`
 
+Phase-locking value is measure of the phase-locking between two timeseries i.e. the generalized phase relation or the phase difference stays nearly constant throughout.
 This function computes the Phase locking value between time series X & Y,
 uses Hilbert transform for phase extraction. 
  After extracting phases from both timeseries, instantaneous phase relation is computed in order to estimate PLV. 

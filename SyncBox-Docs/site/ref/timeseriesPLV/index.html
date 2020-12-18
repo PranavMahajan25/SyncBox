@@ -78,7 +78,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../timeseriesCoherence/">timeseriesCoherence.m</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../timeseriesShannonEntropy/">timeseriesShannonEntropy.m</a>
+                <li class="toctree-l2"><a class="reference internal" href="../timeseriesNSE/">timeseriesNSE.m</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../timeseriesLambda/">timeseriesLambda.m</a>
                 </li>
@@ -156,7 +156,8 @@
               
                 <h2 id="phase-locking-value">Phase Locking Value</h2>
 <p><code>function [parameters, data] = timeseriesPLV(X,Y)</code></p>
-<p>This function computes the Phase locking value between time series X &amp; Y,
+<p>Phase-locking value is measure of the phase-locking between two timeseries i.e. the generalized phase relation or the phase difference stays nearly constant throughout.
+This function computes the Phase locking value between time series X &amp; Y,
 uses Hilbert transform for phase extraction. 
  After extracting phases from both timeseries, instantaneous phase relation is computed in order to estimate PLV. </p>
 <p>For more details, please see Lachaux et al., 1999, 

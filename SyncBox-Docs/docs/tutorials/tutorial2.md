@@ -1,11 +1,13 @@
 # Neuron mass model timeseries tutorial
-We demonstrate how to filter output timeseries from a simulation of Neuron mass model of two coupled LGNs 
+In Tutorial one we computed synchronization measures on output of two coupled oscillators. 
+Now in this tutorial we will apply these measures to a pre-computed output of two coupled brain-inspired  neural networks.
+We demonstrate how to filter output timeseries from a simulation of Neuron mass model of two coupled Lateral Geniculate Nuclei (LGNs) 
 and utilize the toolbox functions to estimate synchronozation measure estimates.
 
  
 #### Construct appropriate filter.
 Appropriate filter construction is necessary for PLV calculation as we use Hilbert transform for phase extraction. 
-Another variant using Morlet wavelet (which we have not implemented filters in it's own band so in that case filtering won't be necessary.
+Another variant using Morlet wavelet (which we have not implemented) filters in it's own band so in that case filtering won't be necessary.
 
 ``` matlab
 % THE TIME PARAMETERS AND VECTOR

@@ -1,6 +1,6 @@
 # Weakly coupled oscillators tutorial
 We demonstrate how to simulate weakly coupled oscillators with and without noise 
-and utilize the toolbox functions to estimate synchronozation measure estimates from noisy data.
+and utilize the toolbox functions to estimate synchronization measure estimates from noisy data.
 We then compare PLV and coherence estimates with approximation of actual phase locking.
  
 #### Initialization
