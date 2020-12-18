@@ -1,11 +1,11 @@
 addpath('../paper_data/lineplot_data')
 
-%% 21-11-2020: Modified and adapted for PAKDD by BSB - Harcoded for input impulse amplitude 5 and 10 and frequency between 1 to 30 hz
+%% 21-11-2020: Modified and adapted for paper by BSB - Harcoded for input impulse amplitude 5 and 10 and frequency between 1 to 30 hz
 %% Originally Authored by: Pranav Mahajan - 19/11/2020
 clear all
 % close all
 clc
-%% Koad data: Either
+%% Load data: Either
 % load syncdata_withoutIN.mat
 %% Load data: or
 load syncdata_withIN.mat 
