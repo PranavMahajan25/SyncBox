@@ -3,7 +3,18 @@ addpath('../toolbox')
 clear all;
 clc;
 
-%% Initialization
+%% Note: 
+% The following coupled oscillator system is directly based on the code by
+% Lowet et. al. [1] as used in their paper. Please contact the authors (Lowet
+% et. al.) for any doubts in the oscillator system. We in this tutorial
+% focus on running our toolbox measures on the outputs of this system.
+% 
+% Reference -
+% [1] Lowet, E., Roberts, M. J., Bonizzi, P., Karel, J., & De Weerd, P. 
+% (2016). Quantifying neural oscillatory synchronization: a comparison 
+% between spectral coherence and phase-locking value approaches. PloS one, 11(1)
+
+% Initialization
 snr2 =1000;
 trial_num=100;
 coupling2 =0.75;   
@@ -22,7 +33,7 @@ ffr= freqlin;
 nn=nn+1;
 trt=0;
 
-%% Generate data with and without noise (from simulation of osc)
+% Generate data with and without noise (from simulation of osc)
 
 for trial=1:trial_num
     number_of_nodes=2; % Two oscillators
@@ -93,7 +104,7 @@ Coh = parameters.Coh_estimate;
 X1 = trials{1}(1,:);
 Y1 = trials{1}(2,:);
 
-[parameters, data]=timeseriesPLV(X1,Y1);
+[parameters, ~]=timeseriesPLV(X1,Y1);
 PLV = parameters.PLV_estimate;
 
 %% Value comparison
@@ -103,7 +114,7 @@ Expected_Phase_locking, PLV, Coh
 %% Transfer Entropy (TE) estimation  (Rank method - simple binning)
 t=2; w=2; % time lag 
 l=1; k=1; % block lengths
-[parameters, data] = timeseriesTE_rank(X1,Y1,l,k,t,w,128);
+[parameters, ~] = timeseriesTE_rank(X1,Y1,l,k,t,w,128);
 
 TE = parameters.TE_estimate;
 

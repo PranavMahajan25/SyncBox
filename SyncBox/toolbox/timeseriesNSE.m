@@ -14,7 +14,7 @@ function [parameters, data] = timeseriesNSE(X, Y, m, n)
 % n: multiple for the second signal, default is 1
 %
 % Outputs:
-% parameter.NSE_estimate: normalaised Shannon Entropy estimate 
+% parameter.NSE_estimate: normalised Shannon Entropy estimate 
 % (between 0 to 1)
 % data.signal1: X
 % data.signal2: Y

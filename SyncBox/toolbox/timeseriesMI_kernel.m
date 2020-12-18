@@ -1,5 +1,10 @@
 function [parameters, data] = timeseriesMI_kernel(X, Y, h, ind)
 %%%%%
+% Mutual information is an information-theoretic measure that can quantify 
+% non-linear dependencies between systems, unlike linear cross-correlation.
+% It quantifiesthe amount of information about one system obtained by 
+% knowing about theother system
+%
 % This function computes the Kernel-based estimate for mutual information 
 % I(X, Y) between time series X and Y.
 % Data is first copula-transformed, then marginal and joint probability 

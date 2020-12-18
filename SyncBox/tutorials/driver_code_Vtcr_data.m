@@ -1,14 +1,10 @@
+% Note: Nonlinear Interdependence takes much longer to compute, so consider 
+% commenting it out if not required.
+
 addpath('../toolbox')
 
 clear all;
 clc;
-
-% THE TIME PARAMETERS AND VECTOR
-delt=0.001; %% 1 millisecond
-endtime=40; %% seconds
-
-timevec=0:delt:endtime;
-timelen=numel(timevec);
 
 % Construct an FDESIGN object and call its BUTTER method.
 Fs = 1000;
@@ -20,14 +16,17 @@ Hd = design(h, 'butter');
 [B,A]=sos2tf(Hd.sosMatrix,Hd.Scalevalues);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Prequisite: 
+% Load the data from some .mat file or generate your own data.
+% Here we use a pre-computed data from two coupled LGN system where Vtcr1
+% and Vtcr2 are the output timeseries. In order to use these functions for
+% your system, just change the X1 and Y1 input timeseries and you are good 
+% to go!
+
 load('data.mat')
 
 Vtcr1 = filtfilt(B,A,squeeze(data(1, :)));
-hold on; 
-plot(timevec(15001:20000), Vtcr1(15001:20000))
 Vtcr2 = filtfilt(B,A,squeeze(data(2, :)));
-hold on; 
-plot(timevec(15001:20000), Vtcr2(15001:20000))
 
 
 %% Phase locking value (PLV) estimation
@@ -37,9 +36,10 @@ Y1 = Vtcr2(15001:20000);
 
 [parameters, data]=timeseriesPLV(X1,Y1);
 PLV = parameters.PLV_estimate;
-% signal1 = data.signal1;
-% signal2 = data.signal2;
+signal1 = data.signal1;
+signal2 = data.signal2;
 
+PLV
 %% Transfer Entropy (TE) estimation  (Rank method - simple binning)
 
 X1 = Vtcr1(15001:20000);
@@ -49,9 +49,10 @@ l=1; k=1; % block lengths
 [parameters, data] = timeseriesTE_rank(X1,Y1,l,k,t,w,128);
 
 TE = parameters.TE_estimate;
-% signal1 = data.signal1;
-% signal2 = data.signal2;
+signal1 = data.signal1;
+signal2 = data.signal2;
 
+TE
 %% Phase TE and differential Phase TE estimation 
 
 X1 = Vtcr1(15001:20000);
@@ -60,9 +61,10 @@ Y1 = Vtcr2(15001:20000);
 
 PTE = parameters.PTE_estimate;
 dPTE = parameters.dPTE_estimate;
-% signal1 = data.signal1;
-% signal2 = data.signal2;
+signal1 = data.signal1;
+signal2 = data.signal2;
 
+PTE
 %% Mutual Info estimated using Gaussian kernels
 
 X1 = Vtcr1(15001:20000);
@@ -71,9 +73,10 @@ Y1 = Vtcr2(15001:20000);
 
 MI = parameters.MI_estimate;
 h = parameters.kernel_width;
-% signal1 = data.signal1;
-% signal2 = data.signal2;
+signal1 = data.signal1;
+signal2 = data.signal2;
 
+MI
 %% Spectral Coherence estimate
 
 X1 = Vtcr1(15001:20000);
@@ -91,8 +94,9 @@ Y = [Y1; Y2; Y3];
 [parameters,data] = timeseriesCoherence(X, Y);
 
 Coh = parameters.Coh_estimate;
-% trial_data = data.trial;
+trial_data = data.trial;
 
+Coh
 %% Cross correlation 
 
 X1 = Vtcr1(15001:20000);
@@ -103,9 +107,24 @@ Y1 = Vtcr2(15001:20000);
 
 
 Corr = parameters.Corr;
-% signal1 = data.signal1;
-% signal2 = data.signal2;
+signal1 = data.signal1;
+signal2 = data.signal2;
 
+Corr
+%% Normalised Shannon Entropy
+
+X1 = Vtcr1(15001:20000);
+Y1 = Vtcr2(15001:20000);
+
+[parameters,data] = timeseriesNSE(X1, Y1);
+
+
+NSE = parameters.NSE_estimate;
+signal1 = data.signal1;
+signal2 = data.signal2;
+
+NSE
+close all;
 %% Directed Nonlinear Interdependence
 % Takes significant time to compute - ranking based solution can improve
 
@@ -118,5 +137,5 @@ M = parameters.NLI_estimate;
 % signal1 = data.signal1;
 % signal2 = data.signal2;
 
+M
 
-PLV, TE, PTE, dPTE, MI, Coh, Corr, M

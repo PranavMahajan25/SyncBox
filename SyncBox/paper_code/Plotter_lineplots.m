@@ -1,11 +1,17 @@
 addpath('../paper_data/lineplot_data')
 
-%% 21-11-2020: Modified and adapted for PAKDD by BSB - Harcoded for input impulse amplitude 5 and 10 and frequency between 1 to 30 hz
-%% Originally Authored by: Pranav Mahajan - 19/11/2020
+%% Log: 21-11-2020: Modified and adapted for arXiv paper by BSB
+% Harcoded for input impulse amplitude 5 and 10 and frequency between 1 to 30 hz
+% Originally Authored by: Pranav Mahajan - 19/11/2020
+
+%% This code will generate the Line Plots from the arXiv paper
+% This code loads the pre-computed synchronization measures data obtained
+% by running our toolbox on the LGN neural mass model with and without IN.
+
 clear all
 % close all
 clc
-%% Koad data: Either
+%% Load data: Either
 % load syncdata_withoutIN.mat
 %% Load data: or
 load syncdata_withIN.mat 

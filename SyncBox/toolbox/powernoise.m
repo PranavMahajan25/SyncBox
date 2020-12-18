@@ -1,7 +1,7 @@
 function x = powernoise(alpha, N, varargin)
 % Generate samples of power law noise. The power spectrum
 % of the signal scales as f^(-alpha).
-% Useage:
+% Usage:
 %  x = powernoise(alpha, N)
 %  x = powernoise(alpha, N, 'option1', 'option2', ...)
 % Inputs:

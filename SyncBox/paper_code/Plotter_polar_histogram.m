@@ -1,6 +1,8 @@
 addpath('../paper_data/polarhist_phaseslip_data')
 
-%% Pranav 22/11/2020
+%% Log: Pranav 22/11/2020 
+% This code will generate the Polar Histograms and Phase slip plots
+
 clear all;
 close all;
 clc;
@@ -9,8 +11,8 @@ stepsize = 0.001;
 comp_duration = 10;
 
 % Analysis Parameters
-start_ind = 1/stepsize +1;%10/stepsize +1;  % simulation step at which to start spectral analysis [*startind*]
-end_ind = start_ind+(comp_duration/stepsize +1);%(10+comp_duration)/stepsize +1;  % simulation step at which to end spectral analysis [*endind*]
+start_ind = 1/stepsize +1; % simulation step at which to start spectral analysis [*startind*]
+end_ind = start_ind+(comp_duration/stepsize +1);  % simulation step at which to end spectral analysis [*endind*]
 
 Fs = 1000;
 Fc1 = 1; % First Cutoff Frequency
@@ -56,18 +58,6 @@ xlabel('Time (seconds)')
 grid on,box off
 legend('',''),legend box off
 
-
-% Keeping the Get_Normalized_S here just for quick cross check, do feel
-% free to remove later
-function S_norm = Get_Normalized_S(delta_phase)
-    % adding variable required for shannon entropy
-    hist_nbins = 80;
-    S_max = log(hist_nbins);
-    
-    hist_delta = histogram(delta_phase, hist_nbins, 'Normalization', 'probability').Values;
-    S = -1*dot(hist_delta(hist_delta>0), log(hist_delta(hist_delta>0)));
-    S_norm = (S_max - S)/S_max;
-end
 
 
 function phase_relation_wrapped = get_delta_phase(Vtcr, Vtrn,n,m)

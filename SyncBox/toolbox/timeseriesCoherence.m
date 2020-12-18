@@ -1,5 +1,6 @@
 function [parameters, data]=timeseriesCoherence(X,Y,n)
 %%%%%
+% Spectral coherence measures the normalized correlation between two powerspectra.
 % This function computes the Spectral Coherence between 'n' trials of 
 % 2 time series X & Y
 %
