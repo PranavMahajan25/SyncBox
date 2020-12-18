@@ -24,6 +24,9 @@ function [parameters, data] = timeseriesLambda(X, Y, m, n)
 % implementations, so please do consider citing them:
 % 
 % References:
+% [1] Rosenblum,M.,Pikovsky,A.,Kurths,J.,Schafer,C.,Tass,P.:Chapter 9 phase 
+% synchronization: From theory to data analysis. In: Neuro-Informatics and 
+% Neural Mod- elling, pp. 279–321. Elsevier (2001).
 %%%%%
 
 %% check input arguments
@@ -59,6 +62,7 @@ mod_phi2 = mod(unwrap_phi2, 2*pi*n);
 
 M = size(mod_phi1);
 M = M(2);
+% Number of bins calculated using formula in Rosenblum et al.[1]
 N = round(exp(0.626 +0.4*log(M-1)));
 
 mod_phi1_hist = histogram(mod_phi1, N);

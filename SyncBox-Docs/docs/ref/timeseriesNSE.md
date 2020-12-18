@@ -1,6 +1,6 @@
 ## Normalized Shannon Entropy
 
-`function [parameters, data] = timeseriesShannonEntropy(X, Y, m, n)`
+`function [parameters, data] = timeseriesNSE(X, Y, m, n)`
 
 This function computes the Normalized Shannon Entropy sync measure between time series X & Y, for m:n synchronization. Uses Hilbert transform for Phase extraction. After extracting phases from both timeseries, the Shannon entropy of the phase relation histogram is calculated. This value is normalised by the maximum possible Shannon entropy for the histogram.
 
@@ -18,7 +18,7 @@ This function computes the Normalized Shannon Entropy sync measure between time 
 
 #### Outputs:
 
-`parameter.ShannonEntropy_estimate`: normalaised Shannon Entropy estimate (between 0 to 1)
+`parameter.NSE_estimate`: normalaised Shannon Entropy estimate (between 0 to 1)
 
 `data.signal1`: X
 
@@ -33,8 +33,8 @@ This function computes the Normalized Shannon Entropy sync measure between time 
 >> Y1 = Vtcr2(15001:20000);
 >> m = 1;
 >> n = 1;
->> [parameters, data]=timeseriesShannonEntropy(X1,Y1,m,n);
->> NSE = parameters.ShannonEntropy_estimate;
+>> [parameters, data]=timeseriesNSE(X1,Y1,m,n);
+>> NSE = parameters.NSE_estimate;
 >> signal1 = data.signal1;
 >> signal2 = data.signal2;
 ```

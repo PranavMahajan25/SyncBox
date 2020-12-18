@@ -1,11 +1,11 @@
-function [parameters, data] = timeseriesShannonEntropy(X, Y, m, n)
+function [parameters, data] = timeseriesNSE(X, Y, m, n)
 %%%%%
-% This function computes the shannon entropy sync measure between time series 
+% This function computes the Normalized Shannon Entropy sync measure between time series 
 % X & Y,
 % Uses Hilbert transform for Phase extraction.
 % After extracting phases from both timeseries, 
-% the Shannon entropy of the phase relation histogram is calculated and 
-% normalised.
+% the Shannon entropy of the phase relation histogram is calculated
+% This value is normalized by the maximum possible Shannon Entropy
 %
 % Inputs:
 % X: first time series in 1-D vector
@@ -14,7 +14,7 @@ function [parameters, data] = timeseriesShannonEntropy(X, Y, m, n)
 % n: multiple for the second signal, default is 1
 %
 % Outputs:
-% parameter.ShannonEntropy_estimate: normalaised Shannon Entropy estimate 
+% parameter.NSE_estimate: normalaised Shannon Entropy estimate 
 % (between 0 to 1)
 % data.signal1: X
 % data.signal2: Y
@@ -25,6 +25,15 @@ function [parameters, data] = timeseriesShannonEntropy(X, Y, m, n)
 % implementations, so please do consider citing them:
 % 
 % References:
+% [1] Rosenblum,M.,Pikovsky,A.,Kurths,J.,Schafer,C.,Tass,P.:Chapter 9 phase 
+% synchronization: From theory to data analysis. In: Neuro-Informatics and 
+% Neural Mod- elling, pp. 279–321. Elsevier (2001).
+% [2] Notbohm, A., Kurths, J., Herrmann, C.S.: Modification of brain 
+% oscillations via rhythmic light stimulation provides evidence for entrainment 
+% but not for superposition of event-related responses. Frontiers in Human 
+% Neuroscience 10, 10 (2016).
+%
+
 %%%%%
 
 %% check input arguments
@@ -50,6 +59,7 @@ p2=angle(hilbert((signal2)));
 pr=angle(exp(1i*m*p1)./exp(1i*n*p2));
 wrap_pr = wrapToPi(pr);
 
+% Number of bins set to 80 as per implementation in Notbohm et al. [2]
 hist_nbins = 80;
 S_max = log(hist_nbins);
 
@@ -57,7 +67,7 @@ hist_delta = histogram(wrap_pr, hist_nbins, 'Normalization', 'probability').Valu
 S = -1*dot(hist_delta(hist_delta>0), log(hist_delta(hist_delta>0)));
 S_norm = (S_max - S)/S_max;
 
-parameters.ShannonEntropy_estimate=S_norm;
+parameters.NSE_estimate=S_norm;
 data.signal1 = signal1;
 data.signal2 = signal2;
 end
