@@ -11,9 +11,9 @@ This function computes the Normalized Shannon Entropy sync measure between time 
 
 `Y`: second time series in 1-D vector
 
-`m`: multiple for the first signal, default is 1
+`m`(optional): multiple for the first signal, default is 1
 
-`n`: multiple for the second signal, default is 1
+`n`(optional): multiple for the second signal, default is 1
 
 
 #### Outputs:
