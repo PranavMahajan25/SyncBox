@@ -11,9 +11,9 @@ This function computes the Lambda synchronisation measure value between time ser
 
 `Y`: second time series in 1-D vector
 
-`m`: multiple for the first time series, default is 1
+`m`(optional): multiple for the first time series, default is 1
 
-`n`: multiple for the second time series, default is 1
+`n`(optional): multiple for the second time series, default is 1
 
 #### Outputs:
 
