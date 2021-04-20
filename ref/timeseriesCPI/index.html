@@ -9,7 +9,7 @@
   <meta name="author" content="Pranav Mahajan">
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>timeseriesLambda.m - SyncBox</title>
+  <title>timeseriesCPI.m - SyncBox</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "timeseriesLambda.m";
-    var mkdocs_page_input_path = "ref\\timeseriesLambda.md";
+    var mkdocs_page_name = "timeseriesCPI.m";
+    var mkdocs_page_input_path = "ref\\timeseriesCPI.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -74,7 +74,7 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../timeseriesNSE/">timeseriesNSE.m</a>
                 </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">timeseriesLambda.m</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">timeseriesCPI.m</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#inputs">Inputs:</a>
     </li>
@@ -143,7 +143,7 @@
         
       
     
-    <li>timeseriesLambda.m</li>
+    <li>timeseriesCPI.m</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -154,16 +154,16 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="lambda-synchronizartion-index">Lambda Synchronizartion Index</h2>
+                <h2 id="conditional-probability-index">Conditional Probability Index</h2>
 <p><code>function [parameters, data] = timeseriesLambda(X, Y, m, n)</code></p>
-<p>This function computes the Lambda synchronisation measure value between time series X &amp; Y, for m:n synchronization. We use Hilbert transform for Phase extraction. After extracting phases from both timeseries, the method detailed in Rosenblum et. al. is followed to calculate the Lambda Synchronisation Index using a stroboscopic approach.</p>
+<p>This function computes the Conditional Probability Index value between time series X &amp; Y, for m:n synchronization. We use Hilbert transform for Phase extraction. After extracting phases from both timeseries, the method detailed in Rosenblum et. al. is followed to calculate the Conditional Probability Index using a stroboscopic approach.</p>
 <h4 id="inputs">Inputs:</h4>
 <p><code>X</code>: first time series in 1-D vector</p>
 <p><code>Y</code>: second time series in 1-D vector</p>
-<p><code>m</code>: multiple for the first time series, default is 1</p>
-<p><code>n</code>: multiple for the second time series, default is 1</p>
+<p><code>m</code>(optional): multiple for the first time series, default is 1</p>
+<p><code>n</code>(optional): multiple for the second time series, default is 1</p>
 <h4 id="outputs">Outputs:</h4>
-<p><code>parameter.Lambda_estimate</code> : Lambda measure estimate (between 0 to 1)</p>
+<p><code>parameter.CPI_estimate</code> : Conditional Probability Index estimate (between 0 to 1)</p>
 <p><code>data.signal1</code> : X</p>
 <p><code>data.signal2</code> : Y</p>
 <h2 id="example-usage">Example usage</h2>
@@ -171,8 +171,8 @@
 &gt;&gt; Y1 = Vtcr2(15001:20000);
 &gt;&gt; m = 1;
 &gt;&gt; n = 1;
-&gt;&gt; [parameters, data]=timeseriesLambda(X1,Y1,m,n);
-&gt;&gt; Lambda = parameters.Lambda_estimate;
+&gt;&gt; [parameters, data]=timeseriesCPI(X1,Y1,m,n);
+&gt;&gt; CPI = parameters.CPI_estimate;
 &gt;&gt; signal1 = data.signal1;
 &gt;&gt; signal2 = data.signal2;
 </code></pre>
