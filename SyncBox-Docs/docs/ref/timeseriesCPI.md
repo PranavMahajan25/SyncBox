@@ -1,6 +1,6 @@
 ## Conditional Probability Index
 
-`function [parameters, data] = timeseriesLambda(X, Y, m, n)`
+`function [parameters, data] = timeseriesCPI(X, Y, m, n)`
 
 This function computes the Conditional Probability Index value between time series X & Y, for m:n synchronization. We use Hilbert transform for Phase extraction. After extracting phases from both timeseries, the method detailed in Rosenblum et. al. is followed to calculate the Conditional Probability Index using a stroboscopic approach.
 
