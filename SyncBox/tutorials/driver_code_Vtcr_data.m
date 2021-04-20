@@ -125,17 +125,33 @@ signal2 = data.signal2;
 
 NSE
 close all;
-%% Directed Nonlinear Interdependence
-% Takes significant time to compute - ranking based solution can improve
+
+%% Conditional Probability Index
 
 X1 = Vtcr1(15001:20000);
 Y1 = Vtcr2(15001:20000);
 
-[parameters,data] = timeseriesNLI(X1, Y1, 32, 1024);
+[parameters,data] = timeseriesCPI(X1, Y1);
 
-M = parameters.NLI_estimate;
+
+CPI = parameters.CPI_estimate;
+signal1 = data.signal1;
+signal2 = data.signal2;
+
+CPI
+close all;
+
+% %% Directed Nonlinear Interdependence
+% % Takes significant time to compute - ranking based solution can improve
+% 
+% X1 = Vtcr1(15001:20000);
+% Y1 = Vtcr2(15001:20000);
+% 
+% [parameters,data] = timeseriesNLI(X1, Y1, 32, 1024);
+% 
+% M = parameters.NLI_estimate;
 % signal1 = data.signal1;
 % signal2 = data.signal2;
 
-M
+% M
 
