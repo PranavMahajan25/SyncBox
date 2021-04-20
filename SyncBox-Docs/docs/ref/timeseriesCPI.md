@@ -1,8 +1,8 @@
-## Lambda Synchronizartion Index
+## Conditional Probability Index
 
 `function [parameters, data] = timeseriesLambda(X, Y, m, n)`
 
-This function computes the Lambda synchronisation measure value between time series X & Y, for m:n synchronization. We use Hilbert transform for Phase extraction. After extracting phases from both timeseries, the method detailed in Rosenblum et. al. is followed to calculate the Lambda Synchronisation Index using a stroboscopic approach.
+This function computes the Conditional Probability Index value between time series X & Y, for m:n synchronization. We use Hilbert transform for Phase extraction. After extracting phases from both timeseries, the method detailed in Rosenblum et. al. is followed to calculate the Conditional Probability Index using a stroboscopic approach.
 
 
 #### Inputs:
@@ -17,7 +17,7 @@ This function computes the Lambda synchronisation measure value between time ser
 
 #### Outputs:
 
-`parameter.Lambda_estimate` : Lambda measure estimate (between 0 to 1)
+`parameter.CPI_estimate` : Conditional Probability Index estimate (between 0 to 1)
 
 `data.signal1` : X
 
@@ -31,8 +31,8 @@ This function computes the Lambda synchronisation measure value between time ser
 >> Y1 = Vtcr2(15001:20000);
 >> m = 1;
 >> n = 1;
->> [parameters, data]=timeseriesLambda(X1,Y1,m,n);
->> Lambda = parameters.Lambda_estimate;
+>> [parameters, data]=timeseriesCPI(X1,Y1,m,n);
+>> CPI = parameters.CPI_estimate;
 >> signal1 = data.signal1;
 >> signal2 = data.signal2;
 ```

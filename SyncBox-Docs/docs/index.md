@@ -12,7 +12,7 @@ The following measures are included in SyncBox,
 * Spectral Coherence 
 * Phase locking value
 * Normalized Shannon Entropy
-* Lambda Synchronisation Index
+* Conditional Probability Index
 * Mutual Information
 * Cross correlation
 
